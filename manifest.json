@@ -1,0 +1,55 @@
+{
+	"manifest_version": 2,
+	"name": "B站增强工具包",
+	"version": "1.0",
+	"description": "把自己能想到的功能付出实践",
+	"author": "FAQ",
+	"homepage_url": "https://github.com/chenyuwulu/bilibili_tools",
+	"icons":
+	{
+		"48": "static/icon/icon.png",
+		"128": "static/icon/icon.png"
+	},
+	"browser_action": 
+	{
+		"default_icon": "static/icon/icon.png",
+		"default_popup": "popup.html"
+	},
+	"permissions":
+	[
+		"contextMenus",
+		"tabs",
+		"notifications",
+		"webRequest",
+		"webRequestBlocking",
+		"storage",
+		"declarativeContent",
+		"http://*/*",
+		"https://*/*"
+	],
+	"content_scripts": 
+	[
+		{
+			"matches": ["<all_urls>"],
+			"js": ["static/jquery/jquery-3.4.1.js","js/content-start.js"],
+			"run_at": "document_start"
+		},
+		{
+			"matches":["https://www.bilibili.com/*"],
+			"js":["js/content-end.js"],
+			"run_at":"document_end"
+		}
+	],
+	"web_accessible_resources": 
+	[
+		"inject.js"
+	],
+	"background":
+	{
+		"page": "background.html"
+	},
+	"options_ui":
+	{
+		"page": "options.html"
+	}
+}
