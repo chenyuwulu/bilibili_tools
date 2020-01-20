@@ -11,5 +11,3 @@
 //   callback(2)
 // }
 // console.log(xxx(4))
-
-

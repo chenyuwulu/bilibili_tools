@@ -17,10 +17,10 @@
 	},
 	"permissions":
 	[
-		"contextMenus",
-		"tabs",
-		"notifications",
-		"webRequest",
+		"contextMenus",//浏览器右键菜单权限
+		"tabs",//浏览器标签页api权限，原本不需要在配置清单写也可以调用，但是访问标签页的链接，标题等时，需要对应全新啊。
+		"notifications",//通知所需要的权限
+		"webRequest",//发起request所需要的权限
 		"webRequestBlocking",
 		"storage",
 		"declarativeContent",

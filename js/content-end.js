@@ -56,10 +56,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse)=>{
 //     recommend_module_clear(uparray)
 //   })
 // })
-setTimeout(() => {
-  $('#app .gg-floor-module').remove() //删除掉页面内广告条类名的元素
-  console.log("执行了一次")
-}, 1000);
 $('#app .gg-floor-module').remove() //删除掉页面内广告条类名的元素
 $('#app .bili-wrapper .sub-channel-m .r-con .mobile-link-l').remove()//删除掉页面内的右侧下载app的二维码
 // $('#app .bili-wrapper .report-scroll-module .gg-floor-module').hide() //屏蔽广告条
@@ -82,3 +78,15 @@ function top_menu_left(){
   
 }
 top_menu_left()
+
+
+
+
+
+
+
+//这里是新篇章
+setTimeout(() => {
+  $('#app #bili_live img').remove() //删除掉页面内广告条类名的元素
+  console.log("这里执行的是我信获取到的")
+}, 1000);

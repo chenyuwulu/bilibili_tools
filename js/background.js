@@ -211,3 +211,20 @@ function getCurrentTabId(callback){
 // 		});
 // 	}
 // }, {urls: ["<all_urls>"]}, ["blocking"]);
+
+
+
+//这里开始是实际测试
+chrome.contextMenus.create({
+  type: "normal",
+  title: "测试右键菜单",
+  onclick:()=>{
+    console.log(111111)
+    // chrome.notifications.create(null, {
+    // 	type: 'basic',
+    // 	// iconUrl: 'img/icon.png',
+    // 	title: '这是标题',
+    // 	message: '您刚才点击了自定义右键菜单！'
+    // })
+  }
+})
