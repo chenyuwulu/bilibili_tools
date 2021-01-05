@@ -31,7 +31,7 @@
 	[
 		{
 			"matches": ["<all_urls>"],
-			"js": ["static/jquery/jquery-3.4.1.js","js/content-start.js"],
+			"js": ["static/jquery/jquery.js","js/content-start.js"],
 			"run_at": "document_start"
 		},
 		{
