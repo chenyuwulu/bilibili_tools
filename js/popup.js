@@ -1,4 +1,4 @@
-﻿
+
 $(function() {
 	get_upname_list()
 })
@@ -100,8 +100,7 @@ function set_upname(x) {
 }
 
 function get_upname_list() {
-	let upname = localStorage.getItem('upname')
-	upname = JSON.parse(upname)
+	let upname = localStorage.getItem('upname')?JSON.parse(localStorage.getItem('upname')):[]
 	let html =''
 	if(upname.length==0){
 		html+='<div style="width:100%;text-align: center;">暂无信息</div>'
