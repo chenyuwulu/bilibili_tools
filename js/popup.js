@@ -1,5 +1,5 @@
 
-$(function() {
+$(function() {//需要初次打开运行
 	get_upname_list()
 })
 
