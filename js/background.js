@@ -11,6 +11,14 @@ chrome.tabs.onUpdated.addListener(function (){
     sendMessageToContentScript({cmd:localStorage.getItem('upname')}, function(response){});
   })
 })
+chrome.tabs.onUpdated.addListener(function (){
+  chrome.tabs.query({
+    active:true,
+    url:"https://bbs.mihoyo.com/*"
+  },(e)=>{
+    sendMessageToContentScript(localStorage.getItem('mihoyo_obj'), function(response){});
+  })
+})
 // 向content-script主动发送消息
 function sendMessageToContentScript(message, callback){
 	getCurrentTabId((tabId) =>{

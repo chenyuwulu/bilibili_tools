@@ -33,6 +33,11 @@
 			"js": ["static/jquery/jquery.js","js/content-start.js"],
 			"run_at": "document_start"
 		},
+    {
+			"matches":["https://bbs.mihoyo.com/*"],
+			"js":["js/miyoushe.js"],
+			"run_at":"document_end"
+		},
 		{
 			"matches":["https://www.bilibili.com/*"],
 			"js":["js/content-end.js"],

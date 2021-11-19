@@ -1,3 +1,49 @@
+$("#mihuyou_daoru").on("click",()=>{
+  $("#file_id").change((e)=>{
+    readWorkbookFromLocalFile(e.target.files[0],(info)=>{
+      var sheet = XLSX.utils.sheet_to_json(info.Sheets.Sheet1)
+      localStorage.setItem('mihuyou_account_array', JSON.stringify(sheet))
+      get_mihuyou_account_array()
+    })
+  })
+  $("#file_id").click()
+})
+$('#mihuyou_daochu').on('click', () => {
+	var table2 = document.querySelector("#table2");
+	var sheet = XLSX.utils.table_to_sheet(table2); //将一个table对象转换成一个sheet对象
+	openDownloadDialog(sheet2blob(sheet), '配置信息.xlsx');
+})
+
+get_mihuyou_account_array()
+function get_mihuyou_account_array() {
+	let array = localStorage.getItem('mihuyou_account_array')
+	array = JSON.parse(array)
+	let html = ''
+	$.each(array, function (index, value) {
+		html += "<tr><td>" + value["邮箱帐号"] + "</td><td>" + value["帐号密码"] + "</td><td>" + value["邮箱密码"] + "</td></tr>"
+	})
+	$("#mihuyou_tdbo").html(html);
+}
+function readWorkbookFromLocalFile(file, callback) {
+	var reader = new FileReader()
+	reader.onload = function(e) {
+		var data = e.target.result
+		var workbook = XLSX.read(data, {type: 'binary'})
+		if(callback) callback(workbook)
+	}
+	reader.readAsBinaryString(file)
+}
+
+
+
+
+
+
+
+
+
+
+
 function getupname() {
 	let upname = localStorage.getItem('upname')
 	upname = JSON.parse(upname)
