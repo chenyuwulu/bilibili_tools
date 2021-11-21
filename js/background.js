@@ -1,22 +1,37 @@
 // console.log($('body'))
 // console.log('这个是存在storage里面的',JSON.parse(localStorage.getItem('upname')))
 
-chrome.tabs.onUpdated.addListener(function (){
-  chrome.tabs.query({
-    active:true,
-    url:"https://www.bilibili.com/*"
-  }, function (e){
-    // console.log('这是B站的返回',e)
-    // console.log(this)
-    sendMessageToContentScript({cmd:localStorage.getItem('upname')}, function(response){});
-  })
+// chrome.tabs.onUpdated.addListener(function (){
+//   chrome.tabs.query({
+//     active:true,
+//     url:"https://www.bilibili.com/*"
+//   }, function (e){
+//     // console.log('这是B站的返回',e)
+//     // console.log(this)
+//     sendMessageToContentScript({cmd:localStorage.getItem('upname')}, function(response){});
+//   })
+// })
+//这里开始是实际测试
+chrome.contextMenus.create({
+  type: "normal",
+  title: "测试右键菜单",
+  onclick:()=>{
+    console.log(111111)
+    // chrome.notifications.create(null, {
+    // 	type: 'basic',
+    // 	// iconUrl: 'img/icon.png',
+    // 	title: '这是标题',
+    // 	message: '您刚才点击了自定义右键菜单！'
+    // })
+  }
 })
+
 chrome.tabs.onUpdated.addListener(function (){
   chrome.tabs.query({
     active:true,
     url:"https://bbs.mihoyo.com/*"
   },(e)=>{
-    sendMessageToContentScript(localStorage.getItem('mihoyo_obj'), function(response){});
+    sendMessageToContentScript(localStorage.getItem('mihuyou_account_array'), function(response){});
   })
 })
 // 向content-script主动发送消息
@@ -219,20 +234,3 @@ function getCurrentTabId(callback){
 // 		});
 // 	}
 // }, {urls: ["<all_urls>"]}, ["blocking"]);
-
-
-
-//这里开始是实际测试
-chrome.contextMenus.create({
-  type: "normal",
-  title: "测试右键菜单",
-  onclick:()=>{
-    console.log(111111)
-    // chrome.notifications.create(null, {
-    // 	type: 'basic',
-    // 	// iconUrl: 'img/icon.png',
-    // 	title: '这是标题',
-    // 	message: '您刚才点击了自定义右键菜单！'
-    // })
-  }
-})
